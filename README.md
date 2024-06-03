@@ -15,7 +15,6 @@
 - Congratulations......
 
 ## How Does It Look?
-https://github.com/abhinayyy003/E-Commerce_DeeAsi/assets/76906609/d58bc9bb-e3ad-4833-9b3b-939184da7c43
 
 
 
