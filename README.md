@@ -4,7 +4,7 @@
 - install node
 - install express
 
-## Used
+## Integrations 
 - Google Authentication
 - Razorpay for payment gateway
 - Gsap, locomotive-scroll, sheryJs - for animation
