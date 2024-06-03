@@ -1,0 +1,44 @@
+<style>
+  #nav {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 2vw 10vw;
+  }
+
+  #nleft {
+    display: flex;
+    gap: 30px;
+  }
+
+  #nav a {
+    font-weight: 800;
+    font-size: 14px;
+    text-decoration: none;
+    color: #000;
+    cursor: none;
+  }
+  button {
+    cursor: none;
+  }
+  #nav #centeratag {
+    font-size: 16px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+</style>
+<div id="nav">
+  <div id="nleft">
+    <a class="nlink" id="magnet" href="/">Home</a>
+    <a class="nlink" id="magnet" href="/aboutus">About Us</a>
+    <a class="nlink" id="magnet" href="/products">Products</a>
+  </div>
+  <a class="nlink test-xl" id="centeratag" href="#">DeeAsi</a>
+  <div id="nright">
+    <form method="post" action="/logout">
+      <a href=""><button id="magnet" type="submit">logout</button></a>
+    </form>
+  </div>
+</div>

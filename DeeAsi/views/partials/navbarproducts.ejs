@@ -1,0 +1,80 @@
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    font-family: Nimbus Sans L;
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+  }
+  #main {
+    width: 100%;
+  }
+  #nav {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 2vw 10vw;
+  }
+
+  #nleft {
+    display: flex;
+    gap: 30px;
+  }
+
+  #nav a {
+    font-weight: 800;
+    font-size: 14px;
+    text-decoration: none;
+    color: #000;
+    cursor: none;
+  }
+  button {
+    cursor: none;
+  }
+
+  #nav #centeratag {
+    font-size: 16px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  #nright span {
+    background: black;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* color: #fff; */
+    position: absolute;
+    top: -5px;
+    left: 80%;
+    padding: 3px 3px;
+  }
+</style>
+<div id="nav">
+  <div id="nleft">
+    <a class="nlink" href="/" id="magnet">Home</a>
+    <a class="nlink" href="/aboutus" id="magnet">About Us</a>
+  </div>
+  <a class="nlink test-xl" id="centeratag" href="#">DeeAsi</a>
+  <div id="nright" style="display: flex">
+    <a
+      href="#"
+      id="magnet"
+      style="margin-right: 3vw; display: flex; position: relative"
+    >
+      <i class="ri-shopping-cart-fill"><span></span></i>
+      <!-- <span></span> -->
+    </a>
+    <form method="post" action="/logout">
+      <a href=""><button id="magnet" type="submit">logout</button></a>
+    </form>
+  </div>
+</div>

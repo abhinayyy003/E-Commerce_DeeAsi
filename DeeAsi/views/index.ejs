@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/sheryjs/dist/Shery.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: Nimbus Sans L;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+      #nav {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        padding: 2vw 10vw;
+      }
+
+      #nleft {
+        display: flex;
+        gap: 30px;
+      }
+
+      #nav a {
+        font-weight: 800;
+        font-size: 14px;
+        text-decoration: none;
+        color: #000;
+        cursor: none;
+      }
+      button {
+        cursor: none;
+      }
+      #nav #centeratag {
+        font-size: 16px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      #nright span {
+        background: black;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* color: #fff; */
+        position: absolute;
+        top: -5px;
+        left: 80%;
+        padding: 3px 3px;
+      }
+
+      #main {
+        width: 100%;
+      }
+      #hero {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-top: 15vw;
+        padding: 0vw 10vw;
+      }
+
+      #sustain {
+        width: 10vw;
+      }
+
+      #sustain p {
+        /* text-transform: capitalize; */
+        font-weight: 800;
+        opacity: 0.5;
+        font-size: 12px;
+        margin: 10px 0;
+      }
+
+      #sustain #susimagewrapper {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        height: 15vw;
+      }
+
+      #susimagewrapper img {
+        /* position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%); 
+    width: 140%;
+    height: 140%; */
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /*it will make sure that the image fits perfectly inside div tag*/
+      }
+
+      #ephemeral {
+        position: relative;
+        width: 30vw;
+        min-height: 42vw;
+      }
+
+      #imgntext {
+        width: fit-content;
+        height: fit-content;
+      }
+
+      #ephemeral img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      #ephemeral p {
+        margin-top: 30px;
+        font-size: 1.3vw;
+        letter-spacing: -0.07vw;
+        line-height: 1.3;
+        width: 40%;
+      }
+
+      #ephemeral #headings {
+        top: -19%;
+        left: -20%;
+        position: absolute;
+      }
+
+      #ephemeral h1 {
+        letter-spacing: -0.4vw;
+        line-height: 1;
+        font-size: 6vw;
+        font-weight: 400;
+      }
+
+      #visit {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      #circlev {
+        border-radius: 50%;
+        border: 1px solid #5e5e5e;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 3vw;
+        height: 3vw;
+      }
+
+      #circlev i {
+        color: #5e5e5e;
+      }
+
+      #visit h3 {
+        font-weight: 400;
+        color: #5e5e5e;
+      }
+
+      #motive {
+        margin-top: 7vw;
+        display: flex;
+        justify-content: space-between;
+        padding: 3vw 10vw;
+      }
+
+      #motive h3 {
+        font-weight: 400;
+        color: #5e5e5e;
+      }
+
+      #motive p {
+        line-height: 1.7;
+        letter-spacing: -0.12vw;
+        position: relative;
+        right: 0;
+        width: 85%;
+        text-align: right;
+        font-size: 2.1vw;
+      }
+
+      #motive span {
+        display: inline-block;
+        border-radius: 100px;
+        margin: 0 13px;
+        margin-bottom: -12.5px;
+      }
+
+      #onespan {
+        width: 80px;
+        height: 50px;
+        background-image: url(./images/bluegirl.jpg);
+        background-size: cover;
+        background-position: 0% 60%;
+      }
+
+      #twospan {
+        width: 80px;
+        height: 50px;
+        background-image: url(./images/deeasi-transparent.png);
+        background-size: cover;
+        background-position: 0% 48%;
+      }
+
+      #threespan {
+        width: 80px;
+        height: 50px;
+        background-image: url(./images/bali_women.jpg);
+        background-size: cover;
+        background-position: 0% 20%;
+      }
+
+      #pictures {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 8vw;
+        padding: 3vw; /* top left right bottom padding 3vw */
+        padding-left: 14vw; /* left padding override */
+        padding-right: 12vw; /* right padding override */
+      }
+
+      #firstpic {
+        width: 17vw;
+      }
+
+      #firstpic #picimg {
+        width: 100%;
+        height: 24vw;
+        margin-bottom: 1vw;
+      }
+
+      #firstpic img,
+      #secpic img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      #firstpic h1,
+      #secpic h1 {
+        letter-spacing: -0.1vw;
+        font-weight: 100;
+        font-size: 2vw;
+      }
+
+      #firstpic p,
+      #secpic p {
+        opacity: 0.8;
+        font-size: 1vw;
+        letter-spacing: -0.07vw;
+        line-height: 1;
+        margin-top: 10px;
+      }
+
+      #secpic {
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        width: 22vw;
+      }
+
+      #secpic #picimg {
+        width: 100%;
+        height: 37vw;
+        margin-bottom: 1vw;
+      }
+
+      #secpic p {
+        width: 50%;
+        text-align: right;
+      }
+
+      #banner {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin-top: 8vw;
+      }
+
+      #bimg {
+        width: 65%;
+        height: 60vh;
+      }
+
+      #bimg img {
+        width: 100%;
+        height: 100%;
+        object-position: 0% 70%;
+        object-fit: cover;
+      }
+
+      #btext {
+        width: 35%;
+        padding: 0 3vw;
+      }
+
+      #btext h1 {
+        font-size: 2.8vw;
+        font-weight: 400;
+        letter-spacing: -0.15vw;
+        line-height: 1;
+      }
+
+      #btext p {
+        font-size: 1vw;
+        margin-top: 20px;
+        width: 60%;
+      }
+
+      #future {
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        height: 100vh;
+        background-color: white;
+      }
+
+      #future video {
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+      }
+
+      #ftext {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        z-index: 9999;
+        background-color: transparent;
+        padding: 1vw 2vw;
+        border-radius: 10px;
+      }
+
+      #ftext h1 {
+        letter-spacing: -0.09vw;
+        font-weight: 100;
+        font-size: 2vw;
+      }
+
+      #ftext button {
+        padding: 0.8vw 1.7vw;
+        font-size: 0.6vw;
+        text-transform: capitalize;
+        margin-top: 10px;
+        font-weight: 500;
+        border-radius: 100px;
+        border-radius: white;
+        border: 1px solid #5e5e5e;
+        color: #6f6f6f;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <div id="home">
+        <div id="nav">
+          <div id="nleft">
+            <a class="nlink" id="magnet" href="/">Home</a>
+            <a class="nlink" id="magnet" href="/aboutus">About Us</a>
+            <a class="nlink" id="magnet" href="/products">Products</a>
+          </div>
+          <a class="nlink test-xl" id="centeratag" href="#">DeeAsi</a>
+          <div id="nright" class="nlink" style="display: flex">
+            <a
+              href="/ordereditems"
+              id="magnet"
+              style="margin-right: 3vw; display: flex; position: relative"
+            >
+              <!-- <i class="ri-shopping-cart-fill"><span></span></i> -->
+              <i class="ri-xbox-fill"></i>
+            </a>
+            <form method="post" action="/logout">
+              <a href=""><button id="magnet" type="submit">Logout</button></a>
+            </form>
+          </div>
+        </div>
+        <div id="hero">
+          <div class="anim2" id="sustain">
+            <h5>01.</h5>
+            <h2>Wonderland!</h2>
+            <p>
+              Embracing the beauty of every curve, celebrating unique essence of
+              every women
+            </p>
+            <div class="imgeff" id="susimagewrapper">
+              <img src="./images/GT_model.jpg" alt="" />
+            </div>
+          </div>
+          <div class="anim2" id="ephemeral">
+            <div id="headings">
+              <h1>UNLEASH</h1>
+              <h1>INNER DIVA!</h1>
+            </div>
+            <div id="imgntext">
+              <img src="./images/model.jpg" alt="" />
+              <p>
+                Starss... Let's redefine fashion, one gorgeous DeeAsi garment at
+                a time!
+              </p>
+            </div>
+          </div>
+          <div class="anim2" id="visit">
+            <div id="circlev">
+              <i class="ri-arrow-down-line"></i>
+            </div>
+            <h3>Visit our gallery.</h3>
+          </div>
+        </div>
+      </div>
+      <div id="motive">
+        <h3>OUR MISSION</h3>
+        <p>
+          At Dee-asI, our aesthetic is all about celebrating YOU in all your
+          diverse glory! Our mission is to<span id="onespan"></span>make you
+          feel confident, fierce queen that you truly are, because you deserve
+          nothing less!<span id="twospan"></span>let your style shine like a
+          constellation of stars!<span id="threespan"></span>So, darling, are
+          you ready to unleash your inner fashionista?
+          <!-- make you feel confident, fierce queen that you truly are, because you deserve nothing less! -->
+        </p>
+      </div>
+
+      <div id="pictures">
+        <div id="firstpic">
+          <div class="imgeff" id="picimg">
+            <img src="./images/wadrobe.jpg" alt="" />
+          </div>
+          <h1>Dee-</h1>
+          <p>
+            Structured garments that enhance those gorgeousness female CURVES.
+          </p>
+        </div>
+        <div id="secpic">
+          <div class="imgeff" id="picimg">
+            <img src="./images/hand.jpg" alt="" />
+          </div>
+          <h1>-Asi.</h1>
+          <p>
+            Structured garments that enhance those gorgeousness female CURVES.
+          </p>
+        </div>
+      </div>
+      <div id="banner">
+        <div id="bimg">
+          <img src="./images/dress.png" alt="" />
+          <img src="./images/deeasilogo_2.png" alt="" />
+        </div>
+        <div id="btext">
+          <h1>Biodegradable</h1>
+          <h1>Packaging</h1>
+          <p>
+            Commited to sustainability eco-friendly choices for a better
+            tomorrow.
+          </p>
+        </div>
+      </div>
+      <div id="future">
+        <video src="./images/back.mp4" autoplay muted loop></video>
+        <div id="ftext">
+          <h1>Fashion Wonderland!</h1>
+          <button>join the moment</button>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+      integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.155.0/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/automat/controlkit.js@master/bin/controlKit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@beta/bundled/locomotive-scroll.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://unpkg.com/sheryjs/dist/Shery.js"
+    ></script>
+  </body>
+
+  <script>
+    // document.addEventListener("mousemove", function (dets) {
+    //   gsap.to("#crsr", {
+    //     left: dets.x,
+    //     top: dets.y,
+    //   });
+    // });
+    // Shery.makeMagnet("#magnet" /* Element to target.*/, {
+    //   //Parameters are optional.
+    //   ease: "cubic-bezier(0.23, 1, 0.320, 1)",
+    //   duration: 1,
+    // });
+    Shery.mouseFollower({
+      skew: true,
+      ease: "cubic-bezier(1, 1, 1, 1)",
+      duration: 0.2,
+    });
+    Shery.makeMagnet("#magnet", {});
+    const scroll = new LocomotiveScroll({
+      el: document.querySelector("#main"),
+      smooth: true,
+    });
+    //gsap to animate
+    gsap.from(".nlink", {
+      stagger: 0.2,
+      y: 10,
+      duration: 1,
+      ease: Power2,
+      opacity: 0,
+    });
+
+    Shery.textAnimate("#headings h1", {
+      style: 2,
+      y: 10,
+      delay: 0.3,
+      duration: 2,
+      ease: "cubic-bezier(0.23, 1, 0.320, 1)",
+      multiplier: 0.1,
+    });
+
+    gsap.from(".anim2", {
+      y: 50,
+      stagger: 0.3,
+      opacity: 0,
+      ease: Expo,
+      duration: 1,
+    });
+
+    Shery.imageEffect("#imgntext img", {
+      style: 3,
+      config: {
+        uFrequencyX: { value: 11.57, range: [0, 100] },
+        uFrequencyY: { value: 4.96, range: [0, 100] },
+        uFrequencyZ: { value: 45.45, range: [0, 100] },
+        geoVertex: { range: [1, 64], value: 18.7 },
+        zindex: { value: -9996999, range: [-9999999, 9999999] },
+        aspect: { value: 0.75 },
+        gooey: { value: false },
+        infiniteGooey: { value: false },
+        growSize: { value: 4, range: [1, 15] },
+        durationOut: { value: 1, range: [0.1, 5] },
+        durationIn: { value: 1.5, range: [0.1, 5] },
+        displaceAmount: { value: 0.5 },
+        masker: { value: true },
+        maskVal: { value: 1.56, range: [1, 5] },
+        scrollType: { value: 0 },
+        noEffectGooey: { value: true },
+        onMouse: { value: 1 },
+        noise_speed: { value: 0.2, range: [0, 10] },
+        metaball: { value: 0.2, range: [0, 2] },
+        discard_threshold: { value: 0.5, range: [0, 1] },
+        antialias_threshold: { value: 0.002, range: [0, 0.1] },
+        noise_height: { value: 0.5, range: [0, 2] },
+        noise_scale: { value: 10, range: [0, 100] },
+      },
+    });
+
+    Shery.imageEffect(".imgeff img", {
+      style: 5,
+      config: {
+        a: { value: 1.98, range: [0, 30] },
+        b: { value: -0.79, range: [-1, 1] },
+        zindex: { value: -9996999, range: [-9999999, 9999999] },
+        aspect: { value: 0.6666666666666666 },
+        gooey: { value: false },
+        infiniteGooey: { value: false },
+        growSize: { value: 4, range: [1, 15] },
+        durationOut: { value: 1, range: [0.1, 5] },
+        durationIn: { value: 1.5, range: [0.1, 5] },
+        displaceAmount: { value: 0.5 },
+        masker: { value: true },
+        maskVal: { value: 1.3, range: [1, 5] },
+        scrollType: { value: 0 },
+        geoVertex: { range: [1, 64], value: 1 },
+        noEffectGooey: { value: true },
+        onMouse: { value: 1 },
+        noise_speed: { value: 0.2, range: [0, 10] },
+        metaball: { value: 0.2, range: [0, 2] },
+        discard_threshold: { value: 0.5, range: [0, 1] },
+        antialias_threshold: { value: 0.002, range: [0, 0.1] },
+        noise_height: { value: 0.5, range: [0, 2] },
+        noise_scale: { value: 10, range: [0, 100] },
+      },
+    });
+
+    gsap.from("#imgntext img", {
+      y: "70",
+      opacity: 0,
+      duration: 2,
+      ease: Expo,
+    });
+
+    Shery.imageEffect("#bimg", {
+      style: 5,
+      config: {
+        a: { value: 0.74, range: [0, 30] },
+        b: { value: -0.97, range: [-1, 1] },
+        zindex: { value: -9996999, range: [-9999999, 9999999] },
+        aspect: { value: 1.9949048404016185 },
+        gooey: { value: true },
+        infiniteGooey: { value: true },
+        growSize: { value: 2.74, range: [1, 15] },
+        durationOut: { value: 0.55, range: [0.1, 5] },
+        durationIn: { value: 1.5, range: [0.1, 5] },
+        displaceAmount: { value: 0.5 },
+        masker: { value: true },
+        maskVal: { value: 1.2, range: [1, 5] },
+        scrollType: { value: 0 },
+        geoVertex: { range: [1, 64], value: 1 },
+        noEffectGooey: { value: false },
+        onMouse: { value: 1 },
+        noise_speed: { value: 0.74, range: [0, 10] },
+        metaball: { value: 0.2, range: [0, 2], _gsap: { id: 33 } },
+        discard_threshold: { value: 0.5, range: [0, 1] },
+        antialias_threshold: { value: 0, range: [0, 0.1] },
+        noise_height: { value: 0.43, range: [0, 2] },
+        noise_scale: { value: 10.74, range: [0, 100] },
+      },
+      gooey: true,
+    });
+
+    document
+      .querySelector("#ftext button")
+      .addEventListener("mouseover", function () {
+        gsap.to("#future video", {
+          opacity: 1,
+          duration: 1,
+          ease: Power4,
+        });
+      });
+
+    document
+      .querySelector("#ftext button")
+      .addEventListener("mouseleave", function () {
+        gsap.to("#future video", {
+          opacity: 0,
+          duration: 1,
+          ease: Power4,
+        });
+      });
+
+    //shery js to animate images
+  </script>
+</html>

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/sheryjs/dist/Shery.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: Nimbus Sans L;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+      #nav {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        padding: 2vw 10vw;
+      }
+
+      #nleft {
+        display: flex;
+        gap: 30px;
+      }
+
+      #nav a {
+        font-weight: 800;
+        font-size: 14px;
+        text-decoration: none;
+        color: #000;
+        cursor: none;
+      }
+      button {
+        cursor: none;
+      }
+      #nav #centeratag {
+        font-size: 16px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      #main {
+        width: 100%;
+      }
+      #nright span {
+        background: black;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* color: #fff; */
+        position: absolute;
+        top: -5px;
+        left: 80%;
+        padding: 3px 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div id="home">
+        <div id="nav">
+          <div id="nleft">
+            <a class="nlink" href="/" id="magnet">Home</a>
+            <a class="nlink" href="/aboutus" id="magnet">About Us</a>
+          </div>
+          <a class="nlink test-xl" id="centeratag" href="#">DeeAsi</a>
+          <div id="nright" style="display: flex">
+            <a
+              href="/ordereditems"
+              id="magnet"
+              style="margin-right: 3vw; display: flex; position: relative"
+            >
+              <!-- <i class="ri-shopping-cart-fill"><span></span></i> -->
+              <i class="ri-xbox-fill"></i>
+              <!-- <i class="ri-codepen-line "></i> -->
+            </a>
+
+            <% if(user){ console.log(user) %>
+              <form method="post" action="/logout">
+                <a href=""><button id="magnet" type="submit">logout</button></a>
+              </form>
+            <% } else{ %>  
+              <a href="/login/federated/google"
+          ><button
+            style="font-weight: 800; font-size: 14px"
+            id="magnet"
+            type="submit"
+          >
+            Login <i class="ri-google-fill"></i></button
+             ></a>
+           <% } %>
+
+
+            
+
+          </div>
+        </div>
+      </div>
+        <h2
+          style="
+            font-size: 2vw;
+            font-weight: 400;
+            letter-spacing: -0.1vw;
+            line-height: 1;
+            margin-left: 77px;
+            margin-top: 1vw;
+          "
+        >
+          Our Products
+        </h2>
+      <div class="w-full flex">
+        <div
+          class="w-3/4 shop-items px-20 py-4 flex gap-x-8 gap-y-4 grid grid-cols-3 justify-around"
+        >
+          <% allproducts.forEach(function(productdets){ %>
+          <div
+            class="shop-item w-60 h-79 bg-zinc-200 rounded-md overflow-hidden overflow-hidden"
+          >
+            <img
+              class="shop-item-image w-full h-35"
+              src="<%= productdets.image %>"
+            />
+            <div class="shop-item-details w-full px-3 py-3">
+              <p class="shop-item-title font-semibold">
+                <%= productdets.productname%>
+              </p>
+
+              <p class="shop-item-price text-sm mt-2">
+                ₹<%= productdets.amount%>
+              </p>
+              <button
+                class="shop-item-button bg-black text-white rounded-md text-xs px-2 py-2"
+                type="button" id="magnet"
+              >
+                Add To Cart
+              </button>
+            </div>
+          </div>
+          <%})%>
+        </div>
+        <div class="w-1/4 px-5 py-4 h-screen overflow-y-auto ml-5 ">
+
+          <h2 class="section-header" style="
+          font-size: 2vw;
+          font-weight: 400;
+          letter-spacing: -0.1vw;
+          line-height: 1;
+        ">CART</h2>
+          <!-- <div class="cart-row">
+            <span class="cart-item cart-header cart-column"></span>
+            <span class="cart-price cart-header cart-column"></span>
+            <span class="cart-quantity cart-header cart-column"></span>
+          </div> -->
+          
+          <% if(user){ %>
+            <div class="flex item-center px-1 py-1 space-between mt-2">
+              <button
+              id="rzp-button1"
+              class="mr-auto bg-black text-white rounded-md text-sm px-2 py-1"
+              type="button"
+              href="/check"
+            >
+              Buy Now
+            </button>
+  
+              <div class="cart-total text-l py-1">
+                <span class="cart-total-title ">Total</span>
+                ₹<span class="cart-total-price" id="total-amount">0</span>
+              </div>
+  
+            </div>
+          <% } else{ %>  
+            <div class="flex item-center px-1 py-1 space-between mt-2">
+              <button
+              class="mr-auto bg-black text-white rounded-md text-sm px-2 py-1"
+              type="button"
+              onclick="alert('Login to Place order')"
+              href="/check"
+            >
+              Buy Now
+            </button>
+  
+              <div class="cart-total text-l py-1">
+                <span class="cart-total-title ">Total</span>
+                ₹<span class="cart-total-price" id="total-amount">0</span>
+              </div>
+  
+            </div>
+         <% } %>
+          
+          
+
+          <div class="cart-items mt-2 px-1"></div>
+        </div>
+      </div>
+    </div> 
+  </body>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+    integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.155.0/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/automat/controlkit.js@master/bin/controlKit.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js"></script>
+  <script
+    type="text/javascript"
+    src="https://unpkg.com/sheryjs/dist/Shery.js"
+  ></script>
+  <!-- shery -->
+  <script>
+    Shery.mouseFollower({
+      skew: true,
+      ease: "cubic-bezier(1, 1, 1, 1)",
+      duration: 0.2,
+    });
+    Shery.makeMagnet("#magnet");
+
+    const scroll = new LocomotiveScroll({
+      el: document.querySelector(".main"),
+      smooth: true,
+    });
+  </script>
+  <!-- razorpay -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script>
+    if (document.readyState == "loading") {
+      document.addEventListener("DOMContentLoaded", ready);
+    } else {
+      ready();
+    }
+    function ready() {
+      var removeCartItemButtons = document.getElementsByClassName("btn-danger");
+      for (var i = 0; i < removeCartItemButtons.length; i++) {
+        var button = removeCartItemButtons[i];
+        button.addEventListener("click", removeCartItem);
+      }
+
+      var quantityInputs = document.getElementsByClassName(
+        "cart-quantity-input"
+      );
+      for (var i = 0; i < quantityInputs.length; i++) {
+        var input = quantityInputs[i];
+        input.addEventListener("change", quantityChanged);
+      }
+
+      var addToCartButtons =
+        document.getElementsByClassName("shop-item-button");
+      for (var i = 0; i < addToCartButtons.length; i++) {
+        var button = addToCartButtons[i];
+        button.addEventListener("click", addToCartClicked);
+      }
+
+      document
+        .getElementsByClassName("btn-purchase")[0]
+        .addEventListener("click", purchaseClicked);
+    }
+
+    function removeCartItem(event) {
+      var buttonClicked = event.target;
+      buttonClicked.parentElement.parentElement.remove();
+      updateCartTotal();
+    }
+
+    function quantityChanged(event) {
+      var input = event.target;
+      if (isNaN(input.value) || input.value <= 0) {
+        input.value = 1;
+      }
+      updateCartTotal();
+    }
+
+    function addToCartClicked(event) {
+      var button = event.target;
+      var shopItem = button.parentElement.parentElement;
+      var title =
+        shopItem.getElementsByClassName("shop-item-title")[0].innerText;
+      var price =
+        shopItem.getElementsByClassName("shop-item-price")[0].innerText;
+      var imageSrc = shopItem.getElementsByClassName("shop-item-image")[0].src;
+      addItemToCart(title, price, imageSrc);
+      updateCartTotal();
+    }
+
+    function addItemToCart(title, price, imageSrc) {
+      var cartRow = document.createElement("div");
+      cartRow.classList.add("cart-row");
+      var cartItems = document.getElementsByClassName("cart-items")[0];
+      var cartItemNames = cartItems.getElementsByClassName("cart-item-title");
+      for (var i = 0; i < cartItemNames.length; i++) {
+        if (cartItemNames[i].innerText == title) {
+          alert("This item is already added to the cart");
+          return;
+        }
+      }
+      var cartRowContents = `
+          <div class="cart-item cart-column flex mt-3">
+              <img class="cart-item-image mr-auto rounded-md" src="${imageSrc}" width="100" height="100">
+              <div>
+                <span class="text-sm text-slate-500">Qty</span>
+                <input class="text-sm cart-quantity-input mr-auto" type="number" value="1" maxlength="3" max="999" style="width: 3rem;">
+                <span class="text-sm cart-price cart-column">${price}</span>
+              </div>
+
+          </div>
+          <div class="cart-quantity cart-column flex items-center space-between">
+            <span class="cart-item-title text-xs ml-1 mr-auto">${title}</span>
+              
+              <button class="btn btn-danger text-sm text-blue-800" type="button">Remove</button>
+          </div>`;
+      cartRow.innerHTML = cartRowContents;
+      cartItems.append(cartRow);
+      cartRow
+        .getElementsByClassName("btn-danger")[0]
+        .addEventListener("click", removeCartItem);
+      cartRow
+        .getElementsByClassName("cart-quantity-input")[0]
+        .addEventListener("change", quantityChanged);
+    }
+
+    function updateCartTotal() {
+      var cartItemContainer = document.getElementsByClassName("cart-items")[0];
+      var cartRows = cartItemContainer.getElementsByClassName("cart-row");
+      let total = 0;
+      for (var i = 0; i < cartRows.length; i++) {
+        var cartRow = cartRows[i];
+        var priceElement = cartRow.getElementsByClassName("cart-price")[0];
+        var quantityElement = cartRow.getElementsByClassName(
+          "cart-quantity-input"
+        )[0];
+        var price = parseFloat(priceElement.innerText.replace("₹", ""));
+        var quantity = quantityElement.value;
+        total = total + price * quantity;
+      }
+      total = Math.round(total * 100) / 100;
+      document.getElementsByClassName("cart-total-price")[0].innerText = total;
+
+      // Razorpay integration
+      const total_amount = total;
+      var settings = {
+        url: "/create/orderId",
+        method: "POST",
+        timeout: 0,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: JSON.stringify({
+          amount: total_amount,
+        }),
+      };
+
+      //creates new orderId everytime
+      $.ajax(settings).done(function (response) {
+        orderId = response.id;
+        console.log(orderId);
+        $("button").show();
+        var options = {
+          amount: response.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+          currency: "INR",
+          name: "DeeAsi",
+          description: "UNLEASH YOUR INNER DIVA",
+          image: "./images/deeasi_insta_logo.png",
+          order_id: response.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+          handler: function (response) {
+            var settings = {
+              url: "/api/payment/verify",
+              method: "POST",
+              timeout: 0,
+              headers: {
+                "Content-Type": "application/json",
+              },
+              data: JSON.stringify({
+                razorpayOrderId: response.razorpay_order_id,
+                razorpayPaymentId: response.razorpay_payment_id,
+                razorpaySignature: response.razorpay_signature,
+                totalAmount: total_amount,
+                products: getCartItems(),
+              }),
+            };
+            $.ajax(settings).done(function (status) {
+              if (status == true) {
+                window.location.href = "/ordereditems";
+              } else {
+                alert("Payment Failed");
+              }
+            });
+          },
+          notes: {
+            address: "Razorpay Corporate Office",
+          },
+          theme: {
+            color: "#3399cc",
+          },
+        };
+        var rzp1 = new Razorpay(options);
+        rzp1.on("payment.failed", function (response) {
+          alert(response.error.code);
+          alert(response.error.description);
+          alert(response.error.source);
+          alert(response.error.step);
+          alert(response.error.reason);
+          alert(response.error.metadata.order_id);
+          alert(response.error.metadata.payment_id);
+        });
+        document.getElementById("rzp-button1").onclick = function (e) {
+          rzp1.open();
+          e.preventDefault();
+        };
+      });
+    }
+
+    function getCartItems() {
+      var cartItemContainer = document.getElementsByClassName("cart-items")[0];
+      var cartRows = cartItemContainer.getElementsByClassName("cart-row");
+      var cartItems = [];
+      for (var i = 0; i < cartRows.length; i++) {
+        var cartRow = cartRows[i];
+        var titleElement = cartRow.getElementsByClassName("cart-item-title")[0];
+        var quantityElement = cartRow.getElementsByClassName(
+          "cart-quantity-input"
+        )[0];
+        var priceElement = cartRow.getElementsByClassName("cart-price")[0];
+        cartItems.push({
+          name: titleElement.innerText,
+          quantity: quantityElement.value,
+          price: priceElement.value
+        });
+      }
+      return cartItems;
+    }
+    //razorpay
+  </script>
+</body>
+</html>
