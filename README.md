@@ -18,5 +18,4 @@
 https://github.com/abhinayyy003/E-Commerce_DeeAsi/assets/76906609/e6a1ce6d-6eff-4173-9e93-b2595e891b9f
 
 ### Email (orderPlacedConirmation)
-<img width="1053" alt="Orderplaced_confirmation" src="https://github.com/abhinayyy003/E-Commerce_DeeAsi/assets/76906609/1ad81676-01fd-46cf-b948-c15c2e1dfffc">
-
+<img width="1053" alt="Orderplaced_confirmation" src="https://github.com/abhinayyy003/E-Commerce_DeeAsi/assets/76906609/cba82421-aac8-4fe4-9f46-e86c4d05808a">
