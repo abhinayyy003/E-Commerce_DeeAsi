@@ -1,0 +1,3 @@
+# How To Run...
+
+Install node and express on your system by using (express <name_of_project> - -view=ejs)
