@@ -4,6 +4,12 @@
 - install node
 - install express
 
+## Used
+- Google Authentication
+- Razorpay for payment gateway
+- Gsap, locomotive-scroll, sheryJs - for animation
+- Nodemailer for orderPlacedConfirmation
+
 ## How To Run?
 - Open Terminal and Change the path to Desktop
 - Express <name_of_project> --view=ejs
